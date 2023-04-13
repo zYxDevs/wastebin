@@ -72,8 +72,7 @@ class DetaDB(DocumentDB):
         self._db = self._deta.Base(name)
 
     def get(self, id: str) -> Optional[Document]:
-        document = self._db.get(id)
-        if document:
+        if document := self._db.get(id):
             return Document.parse_obj(document)
 
     def put(self, document: Document) -> str:
